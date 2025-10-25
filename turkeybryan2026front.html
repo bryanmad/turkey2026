@@ -102,7 +102,27 @@ left: 0;
     position:absolute;
     top:0;
     right:-100%;
-    background-color: blue;
+    //background-color: blue;
+    color:white;
+    transition:0.4s ease;
+
+
+}
+
+#redscreen {
+	display: none;
+	color: white;
+	font-size: 7vw;
+	background: red;
+	height: 100%;
+
+
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    right:-100%;
+    //background-color: red;
     color:white;
     transition:0.4s ease;
 
@@ -125,11 +145,11 @@ left: 0;
   <div id="replace">
   <!-- main menu and pages go in here --> 
   <div class="icons" id="icons">
-     <div class="img1a" onclick="test()">
+     <div class="img1a" onclick="showblue()">
         <img id="img1" style="border: 0; height: 40px; width: 40px; " src="down.png" alt="x1">
 		home<br>&nbsp;
      </div>
-     <div class="img1a">
+     <div class="img1a" onclick="showred()">
         <img id="img2" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x2">
 		results<br>&nbsp;
      </div>
@@ -148,10 +168,20 @@ left: 0;
   </div>
   
   <!-- -alternative screens here -->
+  
+  <!-- home -->
   <div id="bluescreen">
   bluescreen
   <img id="imgback" onclick= "clearblue()" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x0">
   </div>
+  <!-- results -->
+  <div id="redscreen">
+  bluescreen
+  <img id="imgback" onclick= "clearred()" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x00">
+  </div>
+  
+  
+  
   
   <!-- -end of alternative screens here -->
   <!-- end of main menu and pages go in here --> 
@@ -161,11 +191,18 @@ left: 0;
  
  <script>
  
- function test() {
+ function showblue() {
 	 //document.getElementById("replace").style.background = "blue";
-	 
-	 document.getElementById("bluescreen").style.right = 0;
 	 document.getElementById("bluescreen").style.display = "block";
+	 document.getElementById("bluescreen").style.right = 0;
+	 
+ }
+ 
+ function showred() {
+	 //document.getElementById("replace").style.background = "blue";
+	 document.getElementById("redscreen").style.display = "block";
+	 document.getElementById("redscreen").style.right = 0;
+	 
  }
  
  function clearblue() {
@@ -173,6 +210,14 @@ left: 0;
 	 
 	 document.getElementById("bluescreen").style.right = "-100%";
 	 document.getElementById("bluescreen").style.display = "none";
+	 
+ }
+ 
+ function clearred() {
+	 //document.getElementById("replace").style.background = "blue";
+	 
+	 document.getElementById("redscreen").style.right = "-100%";
+	 document.getElementById("redscreen").style.display = "none";
 	 
  }
  
