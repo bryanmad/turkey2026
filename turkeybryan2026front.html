@@ -234,6 +234,20 @@ left: 0;
  
  <script>
  
+ window.history.pushState(null, "", window.location.href);
+window.onpopstate = function () {
+    window.history.pushState(null, "", window.location.href);
+};
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  function showblue() {
 	 //document.getElementById("replace").style.background = "blue";
 	 document.getElementById("bluescreen").style.display = "block";
