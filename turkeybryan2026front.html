@@ -130,11 +130,14 @@ left: 0;
 }
 
 
-#imgback {
+.imgbackcontainer {
 	position:absolute;
-    bottom:0;
-    left: 0;
+    bottom:1vh;
+    left: 2vw;
+	width: 10vw;
+	height: 10vw;
     background-color: green;
+	border-radius: 50%;
     color:white;
 }
 </style>
@@ -172,12 +175,16 @@ left: 0;
   <!-- home -->
   <div id="bluescreen">
   bluescreen
-  <img id="imgback" onclick= "clearblue()" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x0">
+  <div class="imgbackcontainer">
+  <img id="imgback" onclick= "clearblue()" style="border: 0; height: 8vw; width: 8vw; " src="down.png" alt="x0">
+  </div>
   </div>
   <!-- results -->
   <div id="redscreen">
   redscreen
-  <img id="imgback" onclick= "clearred()" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x00">
+  <div class="imgbackcontainer">
+  <img id="imgback" onclick= "clearred()" style="border: 0; height: 8vw; width: 8vw; " src="down.png" alt="x00">
+  </div>
   </div>
   
   
