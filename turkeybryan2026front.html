@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>turkey2026</title>
+    <meta content="Bryan M" name="author" />
+    <meta name="theme-color" content="indigo">
+    <meta name="robots" content="noindex">
+    <link href="originalgolf.svg" rel="icon" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+	<style>
+:root {
+
+}
+
+    body {
+      background-color: black;
+      font-family: Helvetica, Arial, sans-serif;
+      padding: 0;
+      margin: 0;
+	  box-sizing: border-box;
+      //overflow: hidden;
+    }
+
+ /* menu */ 
+ 
+ /* holds menu */
+.container {
+    position: relative;
+	height: 87vh;
+	width: 100%;
+	
+}
+ 
+.icons {
+position: absolute;
+bottom: 0;
+left: 0;
+    width: 100%;
+    height: 20%;
+	//background: indigo;
+	
+	display: flex;
+	align-items: center;
+  justify-content: center;
+}	
+
+#img1,
+#img2,
+#img3,
+
+#img5 {
+	padding: 5vw;
+	//width: 20vw;
+//background: yellow;
+
+}
+
+#img1,
+#img3,
+#img5 {
+	background: gray;
+}
+
+#img2 {
+	background: lightgray;
+}
+
+
+.img1a {
+	width: 20vw;
+	text-align: center;
+	font-size: 2vh;
+	color: magenta;
+}
+
+/* end of menu */
+
+/* point at which pages are inserted */
+#replace {
+	color: white;
+	font-size: 7vw;
+	background: cyan;
+	height: 100%;
+}
+
+#bluescreen {
+	color: white;
+	font-size: 7vw;
+	background: blue;
+	height: 100%;
+
+
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    right:-100%;
+    background-color: blue;
+    color:white;
+    transition:0.4s ease;
+
+
+}
+
+
+#imgback {
+	position:absolute;
+    bottom:0;
+    left: 0;
+    background-color: green;
+    color:white;
+}
+</style>
+</head>
+<body>
+<!-- main menu --> 
+<div class="container">
+  <div id="replace">
+  <!-- main menu and pages go in here --> 
+  <div class="icons" id="icons">
+     <div class="img1a" onclick="test()">
+        <img id="img1" style="border: 0; height: 40px; width: 40px; " src="down.png" alt="x1">
+		home<br>&nbsp;
+     </div>
+     <div class="img1a">
+        <img id="img2" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x2">
+		results<br>&nbsp;
+     </div>
+     <div class="img1a">
+        <img id="img3" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x3">
+		tee<br>times
+     </div> 
+     <div class="img1a">
+        <img id="img4" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x4">
+		daily<br>results
+     </div>
+     <div class="img1a">
+        <img id="img5" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x5">
+		final<br>results
+     </div>
+  </div>
+  
+  <!-- -alternative screens here -->
+  <div id="bluescreen">
+  bluescreen
+  <img id="imgback" onclick= "clearblue()" style="border: 0; height: 40px; width: 10vw; " src="down.png" alt="x0">
+  </div>
+  
+  <!-- -end of alternative screens here -->
+  <!-- end of main menu and pages go in here --> 
+  </div>
+  </div>
+ 
+ 
+ <script>
+ 
+ function test() {
+	 //document.getElementById("replace").style.background = "blue";
+	 
+	 document.getElementById("bluescreen").style.right = 0;
+	 
+ }
+ 
+ function clearblue() {
+	 //document.getElementById("replace").style.background = "blue";
+	 
+	 document.getElementById("bluescreen").style.right = "-100%";
+	 
+ }
+ 
+ function hideIcons() {
+	 
+	 document.getElementById("icons").style.display = "none";
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </script>
+ 
+ 
+ 
+ </body>
