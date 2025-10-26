@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>turkey2026</title>
+    <meta content="Bryan M" name="author" />
+    <meta name="theme-color" content="indigo">
+    <meta name="robots" content="noindex">
+    <link href="originalgolf.svg" rel="icon" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="originalgolf.svg.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+	<style>
+:root {
+    --team-height: 5vh;
+    --team-spacing: 2vh;
+}
+
+    body {
+      background-color: black;
+      font-family: Helvetica, Arial, sans-serif;
+      padding: 0;
+      margin: 0;
+	  box-sizing: border-box;
+      overflow: hidden;
+    }
+
+  
+ /* holds menu */
+.container {
+    position: relative;
+	height: 87vh;
+}
+ 
+ 
+ 
+/* for each day */
+#menu1,
+#menu2,
+#menu3,
+#menu4,
+#menu5,
+#menu6 {
+		border: 2px solid white;
+		background-repeat: no-repeat;
+		background-size: cover;
+		text-align: center;
+		//height: calc((87vh - 1vh) / 6);
+		line-height: calc((87vh - 2vh) / 6);
+		color: white;
+		//font-size: 10vw;
+		font-size: 10vh;
+		text-shadow:
+                -2px -2px 0 gray,
+                2px -2px 0 gray,
+                -2px 2px 0 gray,
+                2px 2px 0 gray,
+                -3px 0px 0 gray,
+                3px 0px 0 gray,
+                0px -3px 0 gray,
+                0px 3px 0 gray;
+}
+
+/* images */
+#menu1 {background-image: url("c1.png");}
+#menu2 {background-image: url("c2.png");}
+#menu3 {background-image: url("c3.png");}
+#menu4 {background-image: url("c4.png");}
+#menu5 {background-image: url("c5.png");}
+#menu6 {background-image: url("c6.png");}
+
+/* for full size results per day */
+.expandmenu {
+	    height: 87vh;
+	    transition: all 1s ease;
+		opacity: 1;
+}
+
+/* for return to menu days */	
+.contractmenu {
+        opacity: 0.6;
+	    transition: all 1s ease;
+}
+
+.team {
+    position: absolute;
+    width: 90%;
+    height: var(--team-height);
+    background: rgba(105, 105, 105, 0.8);
+    box-shadow: 0 3px 5px black;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(var(--i) * (var(--team-height) + var(--team-spacing)) + 1vh); /* added top space of 1vh */
+    display: flex;
+    align-items: center;
+    transition-property: top;
+    transition-duration: 1500ms;
+    border-radius: 10px;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	border: 4px solid rgba(255, 255, 255, 0.3);
+	background-clip: padding-box;
+}
+
+.name {
+    width: 65%;
+    display: flex;
+    align-items: center;
+	justify-content: left;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 400;
+    text-transform: capitalize;
+	
+}
+
+.score {
+    width: 20%;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 400;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+.position {
+    width: 15%;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 400;
+    display: flex;	
+	text-align: center;
+	justify-content: center;
+}
+
+.team i {
+    width: 80px;
+    height: var(--team-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.8rem;
+	border-radius: 10px;
+	border: 4px solid rgba(255, 255, 255, 0.3);
+	background-clip: padding-box;
+}
+#warning {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: indigo;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999;
+      text-align: center;
+      color: white;
+      padding-top: 40vh;
+      font-size: 6vh;
+}
+
+</style>
+</head>
+<body>
+
+  <div id="warning">Not available in landscape orientation</div>
+
+  <div id="container" class="container">
+ 
+    <div id="menu1" onclick="activateMenu(this.id)"></div>
+	
+	<div id="menu2" onclick="activateMenu(this.id)"></div>
+	
+	<div id="menu3" onclick="activateMenu(this.id)"></div>
+	
+	<div id="menu4" onclick="activateMenu(this.id)"></div>
+	
+	<div id="menu5" onclick="activateMenu(this.id)"></div>
+	
+	<div id="menu6" onclick="activateMenu(this.id)"></div>
+	
+  </div>
+ 
+<script>
+// Detect whether device supports orientationchange event, otherwise fall back to
+// the resize event.
+    var supportsOrientationChange = "onorientationchange" in window,
+      orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+    window.addEventListener(orientationEvent, function() {
+      if (window.orientation == 0) {
+        document.getElementById("warning").style.display = "none";
+      } else if (window.orientation == 90 || window.orientation == -90) {
+        document.getElementById("warning").style.display = "block";
+      }
+    }, false);
+    
+//------------------------------------------------------------------------------
+	
+	
+	
+	setTimeout(function() {document.getElementById("overlay").style.display = "block"},5000);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+var data;
+var dayCount = 6;
+var url
+
+function addDays() {
+	
+	document.getElementById("menu1").innerText = "Itinerary"
+	document.getElementById("menu2").innerText = "Saturday"
+	document.getElementById("menu3").innerText = "Sunday"
+	document.getElementById("menu4").innerText = "Monday"
+	document.getElementById("menu5").innerText = "Tuesday"
+	document.getElementById("menu6").innerText = "Final"
+	
+}
+addDays();
+
+function addContractSize() {
+	document.getElementById("menu1").className = "contractmenu"
+	document.getElementById("menu2").className = "contractmenu"
+	document.getElementById("menu3").className = "contractmenu"
+	document.getElementById("menu4").className = "contractmenu"
+	document.getElementById("menu5").className = "contractmenu"
+	document.getElementById("menu6").className = "contractmenu"
+}
+addContractSize();
+
+function activateMenu(thisid) {
+	var thisMenuNum = parseInt(thisid.replace("menu",""))
+	var menuNum = thisid.replace("menu","") - 1
+	var thisidmod = 0;
+	if (menuNum > 0) {
+		thisidmod = menuNum;
+	}
+	var x = document.getElementsByClassName('expandmenu');
+    if (x.length > 0) {
+        // shrink
+	    document.getElementById(thisid).className = "contractmenu"
+			for (let i = 1; i <= dayCount; i++) {
+                 if (i !== thisMenuNum) {	
+		             document.getElementById("menu" + i).style.display = "block";
+				 }
+			}	 
+		addDays();
+	} else {
+		// expand
+		   	for (let j = 1; j <= dayCount; j++) {
+		         if (j !== thisMenuNum) {			
+		             document.getElementById("menu" + j).style.display = "none";
+				 }
+			}
+		document.getElementById(thisid).className = "expandmenu"
+		menuNum++
+		getData(menuNum)
+	}
+}
+
+// data is available here
+
+async function getData(menuNum) {
+	    if (menuNum == 1) {
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/info";
+        }
+		if (menuNum == 2) {
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultstuesday";
+        }
+		if (menuNum == 3) {
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultswednesday";
+        }
+		if (menuNum == 4) {
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultsthursday";
+        }
+		if (menuNum == 5) {
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultsfriday";
+        }
+		if (menuNum == 6) {
+	        url = "https://opensheet.elk.sh/1ddB8yCSfaIn864DGe-pqDwaILtLj5QYsdfGOCCUCy4E/resultsfinal";
+        }
+	if (menuNum > 1){
+		try {
+        const dataStream = await fetch(url);
+        if (!dataStream.ok) {
+            throw new Error(`Response status: ${dataStream.status}`);
+        }
+        data = await dataStream.json();
+        } catch (error) {
+           console.error(error.message);
+        }
+        useData(menuNum);
+	} else {
+		alert("info")
+	}
+}
+
+function useData(menuNum) {
+	let container = document.querySelector("#menu" + menuNum);
+	// empty container
+	container.innerHTML = "";
+	data.sort((a, b) => {
+    if (b.score === a.score) {
+      return a.name.localeCompare(b.name); // Sort by name if scores are equal
+    }
+    return b.score - a.score; // Sort by score in descending order
+  })
+  
+  data.forEach((e, i) => (e.rank = i));
+  // build screen
+  data.forEach((el, i) => {
+  let box = document.createElement("div");
+  box.id= "box" + i;
+  box.className = "team";
+  box.style.setProperty("--i", i);  
+  let name = document.createElement("span");
+  name.id = "name" + i
+  name.className = "name";
+  let score = document.createElement("span");
+  score.id = "score" + i
+  score.className = "score";  
+  let position = document.createElement("span");
+  position.id = "position" + i
+  position.className = "position";
+  position.innerHTML = el.position;
+  box.appendChild(position);
+  box.appendChild(name);
+  box.appendChild(score);
+  box.style.setProperty("--color", el.color);
+  container.appendChild(box);
+  // fade the initial view
+  box.style.opacity = 0;
+})
+j=0
+// Using an arrow function to sort players by their name
+let xx = data.toSorted((a, b) =>
+  a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+);
+// initial view which is hidden
+xx.forEach((elstartx,j) => {
+	initialBodyUpdate(elstartx.name,j);
+})
+k=0;
+// do proper display
+data.forEach((el) => {	
+	k++
+	setTimeout(function() {
+		if (el.name !== "") {
+	bodyUpdate(el.name,el.score);
+		}
+   },k*500);
+})
+}
+
+function bodyUpdate(nom,scr) {	 
+    let elName = nom;
+    data.find((team) => team.name === elName);
+data
+      .sort((a, b) => {
+        if (b.score === a.score) {
+          return a.name.localeCompare(b.name); // Sort by name if scores are equal
+        }
+        return b.score - a.score; // Sort by score in descending order
+      })
+	  // now sort out positions for same scores
+	  var held=1;
+	  var heldscore = 0
+	 data.forEach((elem, ind) => {
+          if (elem.score == heldscore) {
+		      elem.position = held
+		  } else {
+		      elem.position = ind + 1;
+		  }
+		  held = elem.position;
+		  heldscore = elem.score;
+     });  
+    let AllTeams = Array.from(document.querySelectorAll(".team"));
+    var k=0
+    AllTeams.forEach((element) => {
+      let elementName = element.querySelector(".name");
+      let elementScore = element.querySelector(".score");
+      if (elementName.innerHTML == elName) {
+        elementScore.innerHTML = scr;
+        let newRank = data.find(
+        (team) => team.name === elementName.innerHTML
+      ).rank;
+	  // move player position
+	  // setProperty(propertyName, value)
+      element.style.opacity = 1 //0.4;
+      element.style.setProperty("--i", newRank);
+      setTimeout(function() {element.style.opacity = 1},800);
+	  let elementPos = element.querySelector(".position");
+	  elementPos.innerText = data.find((team) => team.name === elementName.innerHTML).position
+	  }
+    });
+}	
+  
+function initialBodyUpdate(nom,pos) {	
+    document.getElementById("name" + pos).innerText = nom;
+	document.getElementById("position" + pos).innerText = "";
+}	
+/*
+function simulateClick(ele) {
+		  var event = new MouseEvent('click', {
+			view: window,
+			bubbles: true,
+			cancelable: true
+		  });
+		  cb = document.getElementById(ele);
+		  cb.dispatchEvent(event);
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+resultsday1
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vR_j1mQ5ImRhVvhxh4kyDs3O3MyAsv14ym7u96O5vJQi0KdpuHVjwyAg6zHh7oJ1mChgaDhNN6NdW8m/pub?gid=0&single=true&output=csv
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+
+</html>
