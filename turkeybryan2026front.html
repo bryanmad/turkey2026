@@ -99,7 +99,7 @@ left: 0;
 }
 
 #bluescreen {
-	display: none;
+	display: block;
 	color: white;
 	font-size: 7vw;
 	background: blue;
@@ -114,10 +114,21 @@ left: 0;
     right:-100%;
     //background-color: blue;
     color:white;
-    transition:0.4s ease;
+    transition: 0.1s ease;
 
-
+ //animation: slidein 2s;
 }
+
+.bs {
+	animation: slidein 2s;
+}
+
+@keyframes slidein {
+  0% { right: -100%;}
+  100% { right: 0; display: block;}
+}
+
+
 
 #redscreen {
 	display: none;
@@ -134,7 +145,7 @@ left: 0;
     right:-100%;
     //background-color: red;
     color:white;
-    transition:0.4s ease;
+    transition: 4s ease;
 
 
 }
@@ -208,7 +219,7 @@ left: 0;
   
   <!-- -alternative screens here -->
   
-  <!-- home -->
+  <!-- info -->
   <div id="bluescreen">
   bluescreen
   <div class="imgbackcontainer">
@@ -245,8 +256,11 @@ left: 0;
  
  function showblue() {
 	 //document.getElementById("replace").style.background = "blue";
-	 document.getElementById("bluescreen").style.display = "block";
+	 //document.getElementById("bluescreen").style.display = "block";
 	 document.getElementById("bluescreen").style.right = 0;
+	 //document.getElementById("bluescreen").classList.add("bs");
+	 //setTimeout(function() {document.getElementById("bluescreen").style.right = 0;},1990);
+	 
 	 
  }
  
@@ -261,7 +275,7 @@ left: 0;
 	 //document.getElementById("replace").style.background = "blue";
 	 
 	 document.getElementById("bluescreen").style.right = "-100%";
-	 document.getElementById("bluescreen").style.display = "none";
+	 //document.getElementById("bluescreen").style.display = "none";
 	 
  }
  
