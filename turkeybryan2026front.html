@@ -151,6 +151,50 @@ left: 0;
 
 }
 
+#greenscreen {
+	display: none;
+	color: white;
+	font-size: 7vw;
+	background: green;
+	//height: 100%;
+	height: 87vh;
+
+
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    right:-100%;
+    //background-color: red;
+    color:white;
+    //transition: 4s ease;
+
+
+}
+
+#indigoscreen {
+	display: none;
+	color: white;
+	font-size: 7vw;
+	background: indigo;
+	//height: 100%;
+	height: 87vh;
+
+
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    right:-100%;
+    //background-color: red;
+    color:white;
+    //transition: 4s ease;
+
+
+}
+
+
+
 
 .imgbackcontainer {
 	position:absolute;
@@ -227,12 +271,12 @@ left: 0;
 		<br>tee<br>times
 		<div id="spacer"></div>
      </div> 
-     <div class="img1a">
+     <div class="img1a" onclick="showgreen()">
         <img id="img4" style="border: 0; height: 15vw; width: 15vw; " src="results.png" alt="x4">
 		<br>daily<br>results
 		<div id="spacer"></div>
      </div>
-     <div class="img1a">
+     <div class="img1a" onclick="showindigo()">
         <img id="img5" style="border: 0; height: 15vw; width: 15vw; " src="finalresults.png" alt="x5">
 		<br>final<br>results
 		<div id="spacer"></div>
@@ -248,11 +292,28 @@ left: 0;
   <img id="imgback" onclick= "clearblue()" style="border: 0; height: 20vw; width: 20vw; " src="arrow.png" alt="x0">
   </div>
   </div>
+  
   <!-- results -->
   <div id="redscreen">
   redscreen
   <div class="imgbackcontainer">
   <img id="imgback" onclick= "clearred()" style="border: 0; height: 20vw; width: 20vw; " src="arrow.png" alt="x00">
+  </div>
+  </div>
+  
+  <!-- results -->
+  <div id="greenscreen">
+  redscreen
+  <div class="imgbackcontainer">
+  <img id="imgback" onclick= "cleargreen()" style="border: 0; height: 20vw; width: 20vw; " src="arrow.png" alt="x00">
+  </div>
+  </div>
+  
+  <!-- results -->
+  <div id="indigoscreen">
+  redscreen
+  <div class="imgbackcontainer">
+  <img id="imgback" onclick= "clearindigo()" style="border: 0; height: 20vw; width: 20vw; " src="arrow.png" alt="x00">
   </div>
   </div>
   
@@ -277,37 +338,50 @@ left: 0;
  
  
  function showblue() {
-	 //document.getElementById("replace").style.background = "blue";
 	 document.getElementById("bluescreen").style.display = "block";
 	 document.getElementById("bluescreen").style.right = 0;
-	 //document.getElementById("bluescreen").classList.add("bs");
-	 //setTimeout(function() {document.getElementById("bluescreen").style.right = 0;},1990);
-	 
-	 
  }
  
  function showred() {
-	 //document.getElementById("replace").style.background = "blue";
 	 document.getElementById("redscreen").style.display = "block";
 	 document.getElementById("redscreen").style.right = 0;
-	 
+ }
+
+ function showgreen() {
+	 document.getElementById("greenscreen").style.display = "block";
+	 document.getElementById("greenscreen").style.right = 0;
  }
  
+ function showindigo() {
+	 document.getElementById("indigoscreen").style.display = "block";
+	 document.getElementById("indigoscreen").style.right = 0;
+ }
+
  function clearblue() {
-	 //document.getElementById("replace").style.background = "blue";
-	 
 	 document.getElementById("bluescreen").style.right = "-100%";
-	 document.getElementById("bluescreen").style.display = "none";
-	 
+	 document.getElementById("bluescreen").style.display = "none"; 
  }
  
  function clearred() {
-	 //document.getElementById("replace").style.background = "blue";
-	 
 	 document.getElementById("redscreen").style.right = "-100%";
 	 document.getElementById("redscreen").style.display = "none";
-	 
  }
+
+ function cleargreen() {
+	 document.getElementById("greenscreen").style.right = "-100%";
+	 document.getElementById("greenscreen").style.display = "none"; 
+ }
+ 
+ function clearindigo() {
+	 document.getElementById("indigoscreen").style.right = "-100%";
+	 document.getElementById("indigoscreen").style.display = "none";
+ }
+
+
+
+
+
+
  
  function hideIcons() {
 	 
